@@ -58,7 +58,7 @@ namespace CSharpConsoleMenu
                 
                 catch (InvalidOperationException)
                 {
-                    Console.WriteLine($"Invalid Operation. Option at {input} is hidden.");
+                    Console.WriteLine($"Invalid option. Option at {input} is hidden.");
                     repeat = true;
                 }
             }
@@ -67,7 +67,7 @@ namespace CSharpConsoleMenu
         public void AddMenuItem(MenuItem menuItem)
         {
             if (!MenuItems.Contains(menuItem)) MenuItems.Add(menuItem);
-            else throw new InvalidOperationException();
+            else throw new ArgumentException($"Menu item with id {menuItem.Id} already exists!");
         }
         
         public void AddHiddenMenuItem(MenuItem menuItem)

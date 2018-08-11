@@ -4,7 +4,7 @@ namespace CSharpConsoleMenu
 {
     public sealed class MenuItem
     {
-        private long Id { get; }
+        public long Id { get; }
         public string Description { get; }
         public bool IsVisible { get; private set; }
         private bool IsExitOption { get; set; }
