@@ -85,7 +85,7 @@ namespace CSharpConsoleMenu
             }
             catch (ArgumentOutOfRangeException e)
             {
-                Console.WriteLine("Error showing menu item: "  + e);
+                throw new ArgumentException($"Error hiding menu item. Menu item with ID {itemId} hasn't been added to this menu.");
             }
         }
         
@@ -97,9 +97,9 @@ namespace CSharpConsoleMenu
                 var index = MenuItems.IndexOf(menuItem);
                 MenuItems[index].Hide();
             }
-            catch (ArgumentOutOfRangeException e)
+            catch (ArgumentOutOfRangeException)
             {
-                Console.WriteLine("Error showing menu item: "  + e);
+                throw new ArgumentException($"Error hiding menu item. Menu item with ID {itemId} hasn't been added to this menu.");
             }
         }
     }
