@@ -85,7 +85,7 @@ namespace CSharpConsoleMenu
             }
             catch (ArgumentOutOfRangeException e)
             {
-                throw new ArgumentException($"Error hiding menu item. Menu item with ID {itemId} hasn't been added to this menu.");
+                throw new ArgumentException($"Error showing menu item. Menu item with ID {itemId} hasn't been added to this menu.");
             }
         }
         
