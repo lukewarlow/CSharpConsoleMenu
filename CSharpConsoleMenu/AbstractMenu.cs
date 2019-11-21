@@ -7,12 +7,12 @@ namespace CSharpConsoleMenu
     {
         private string Title { get; }
 
-        private readonly List<MenuItem> MenuItems;
+        private readonly List<MenuItem> _menuItems;
 
         protected AbstractMenu(string title)
         {
             Title = title;
-            MenuItems = new List<MenuItem>();
+            _menuItems = new List<MenuItem>();
             Init();
         }
 
@@ -28,10 +28,10 @@ namespace CSharpConsoleMenu
                 UpdateMenuItems();
                 Console.WriteLine();
                 Console.WriteLine(Title);
-                for (var i = 0; i < MenuItems.Count; i++)
+                for (var i = 0; i < _menuItems.Count; i++)
                 {
-                    if (MenuItems[i].IsVisible)
-                        Console.WriteLine(i + ". " + MenuItems[i].Description);
+                    if (_menuItems[i].IsVisible)
+                        Console.WriteLine(i + ". " + _menuItems[i].Description);
                 }
 
                 Console.Write("Select Option: ");
@@ -40,7 +40,7 @@ namespace CSharpConsoleMenu
                 try
                 {
                     var itemIndex = int.Parse(input);
-                    var menuItem = MenuItems[itemIndex];
+                    var menuItem = _menuItems[itemIndex];
                     if (menuItem.IsVisible) repeat = menuItem.Run();
                     else throw new InvalidOperationException();
                 }
@@ -66,7 +66,7 @@ namespace CSharpConsoleMenu
 
         public void AddMenuItem(MenuItem menuItem)
         {
-            if (!MenuItems.Contains(menuItem)) MenuItems.Add(menuItem);
+            if (!_menuItems.Contains(menuItem)) _menuItems.Add(menuItem);
             else throw new ArgumentException($"Menu item with id {menuItem.Id} already exists!");
         }
         
@@ -80,8 +80,8 @@ namespace CSharpConsoleMenu
             try
             {
                 var menuItem = new MenuItem(itemId);
-                var index = MenuItems.IndexOf(menuItem);
-                MenuItems[index].Show();
+                var index = _menuItems.IndexOf(menuItem);
+                _menuItems[index].Show();
             }
             catch (ArgumentOutOfRangeException e)
             {
@@ -94,8 +94,8 @@ namespace CSharpConsoleMenu
             try
             {
                 var menuItem = new MenuItem(itemId);
-                var index = MenuItems.IndexOf(menuItem);
-                MenuItems[index].Hide();
+                var index = _menuItems.IndexOf(menuItem);
+                _menuItems[index].Hide();
             }
             catch (ArgumentOutOfRangeException)
             {
