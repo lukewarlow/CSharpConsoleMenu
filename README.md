@@ -2,7 +2,7 @@
 # CSharp Console Menu
 ![license](https://img.shields.io/hexpm/l/plug.svg)
 
-This library provides a way to quickly create the menu for your C# console app.
+This awesome library provides a way to quickly create the menu for your C# console app.
 
 ##  Overview
 
